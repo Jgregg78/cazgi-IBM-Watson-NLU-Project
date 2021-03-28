@@ -13,6 +13,7 @@ app.get("/",(req,res)=>{
   });
 
 app.get("/url/emotion", (req,res) => {
+    //change to use nlu instance
     const analyzeParamsEmotion = {
         'url': req.query.url,
         'features': {
