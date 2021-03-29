@@ -14,7 +14,7 @@ app.get("/",(req,res)=>{
 
 app.get("/url/emotion", (req,res) => {
     //change to use nlu instance
-    const analyzeParamsEmotion = {
+    const analyzeParamsEmo = {
         'url': req.query.url,
         'features': {
             'emotion': {
@@ -22,7 +22,7 @@ app.get("/url/emotion", (req,res) => {
             }
         }
     }
-    getNLUInstance().analyze(analyzeParamsEmotion).then(analysisResults => {
+    getNLUInstance().analyze(analyzeParamsEmo).then(analysisResults => {
         console.log(JSON.stringify(analysisResults, null, 2));
         return res.send(analysisResults.result.emotion.document.emotion);
     })
@@ -32,15 +32,14 @@ app.get("/url/emotion", (req,res) => {
 });
 
 app.get("/url/sentiment", (req,res) => {
-    const analyzeParamsSentiment = {
+    const analyzeParamsSent = {
         'url': req.query.url,
         'features': {
             'sentiment': {
             }
         }
     }
-    getNLUInstance().analyze(analyzeParamsSentiment)
-    .then(analysisResults => {
+    getNLUInstance().analyze(analyzeParamsSent).then(analysisResults => {
     console.log(JSON.stringify(analysisResults, null, 2));
     return res.send(analysisResults.result.sentiment.document.label);
     })
@@ -50,7 +49,7 @@ app.get("/url/sentiment", (req,res) => {
 });
 
 app.get("/text/emotion", (req,res) => {
-    const analyzeParamsEmotion = {
+    const analyzeParamsEmo = {
         'text': req.query.text,
         'features': {
             'emotion': {
@@ -58,7 +57,7 @@ app.get("/text/emotion", (req,res) => {
             }
         }
     }
-    getNLUInstance().analyze(analyzeParamsEmotion).then(analysisResults => {
+    getNLUInstance().analyze(analyzeParamsEmo).then(analysisResults => {
         console.log(JSON.stringify(analysisResults, null, 2));
         return res.send(analysisResults.result.emotion.document.emotion);
     })
@@ -68,14 +67,14 @@ app.get("/text/emotion", (req,res) => {
 });
 
 app.get("/text/sentiment", (req,res) => {
-    const analyzeParamsSentiment = {
+    const analyzeParamsSent = {
         'text': req.query.text,
         'features': {
             'sentiment': {
             }
         }
     }
-    getNLUInstance().analyze(analyzeParamsSentiment).then(analysisResults => {
+    getNLUInstance().analyze(analyzeParamsSent).then(analysisResults => {
         console.log(JSON.stringify(analysisResults, null, 2));
         return res.send(analysisResults.result.sentiment.document.label);
     })
